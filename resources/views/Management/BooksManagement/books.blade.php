@@ -10,18 +10,7 @@
 </div>
 
 <div class="w-100 my-4" style="background-color:white;padding:30px;border-radius:20px">
-    <div class="d-flex">
-        <div class="w-50 position-relative">
-            <input class="search" type="text" placeholder="Search" name="search">
-        </div>
-        {{-- <div>
-            Filters
-        </div>
 
-        <div>
-            Sort By
-        </div> --}}
-    </div>
 
     <h1 class="fs-2 fw-bold my-4">Books</h1>
     <table class="table  table-borderless">

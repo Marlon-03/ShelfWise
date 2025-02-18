@@ -2,33 +2,47 @@
 
 
 @section('content')
-<form action="{{route('user.update', $user->id)}}" method="post">
-   
+<div class="container mt-5">
+    <h2>Edit User</h2>
+
+    <form action="{{ route('user.update', $user->id) }}" method="post">
         @csrf
-        <div>
-            <label for="name"> User Name</label>
-            <input type="text" value="{{$user->name}}" name="name">
-        </div>
-        <div>
-            <label for="description">user EMail</label>
-            <textarea  name="email" rows="3"> {{$user->email}} </textarea>
+        @method('PUT')  <!-- This is important for updating resources in RESTful routes -->
+
+        <div class="mb-3">
+            <label for="name" class="form-label">User Name</label>
+            <input type="text" name="name" class="form-control" value="{{ old('name', $user->name) }}">
+            @if ($errors->has('name'))
+                <div class="text-danger">{{ $errors->first('name') }}</div>
+            @endif
         </div>
 
-        <div>
-            <label for="Role">Role</label>
-            <select type="dropdown" name="role">
-                <option value="2">Admin</option>
-                <option value="3">User</option>
+        <div class="mb-3">
+            <label for="email" class="form-label">User Email</label>
+            <textarea name="email" rows="3" class="form-control">{{ old('email', $user->email) }}</textarea>
+            @if ($errors->has('email'))
+                <div class="text-danger">{{ $errors->first('email') }}</div>
+            @endif
+        </div>
+
+        <div class="mb-3">
+            <label for="role" class="form-label">Role</label>
+            <select name="role" class="form-select">
+                <option value="2" {{ old('role', $user->role) == 2 ? 'selected' : '' }}>Admin</option>
+                <option value="3" {{ old('role', $user->role) == 3 ? 'selected' : '' }}>User</option>
             </select>
+            @if ($errors->has('role'))
+                <div class="text-danger">{{ $errors->first('role') }}</div>
+            @endif
         </div>
-    
-        <div>
-            <label for="borrowing_limit">Borowing limit</label>
-            <input type="number" name="borrowing_limit" value="{{$user->borrowing_limit}}">
+
+        <div class="mb-3">
+            <label for="borrowing_limit" class="form-label">Borrowing Limit</label>
+            <input type="number" name="borrowing_limit" class="form-control" value="{{ old('borrowing_limit', $user->borrowing_limit) }}">
         </div>
-        <div>
-            <input type="submit" value="Submit">
-        </div>
-</form>
+
+        <button type="submit" class="btn btn-primary" style="background-color: #4E9C84">Update</button>
+    </form>
+</div>
 
 @endsection
