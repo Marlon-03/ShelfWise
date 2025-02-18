@@ -1,0 +1,179 @@
+a {
+    text-decoration: none;
+    color: #9F9F9F;
+}
+
+h1{
+    font-family: Roboto;
+}
+
+li{
+    margin-bottom: 20px;
+}
+
+table{
+    font-family: Roboto;
+    font-size: 16px;
+}
+
+
+td{
+    vertical-align: middle;
+}
+
+th{
+    color: #717171 !important;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+}
+
+.active{
+        color: #A7BA1E; /* Change the color for active links */
+        font-weight: bold; /* Make the text bold for active links */
+        background-color: #2D3D3F;
+        border-radius: 20px;
+        /* Add any other styles you want for active links */
+
+}
+
+
+.nav-link:hover {
+    color: #A7BA1E; /* Inherit the default text color */
+}
+
+/* change color of every row, starts at the first row */
+tr:nth-child(odd) td {  
+    background-color: #DCEBD7;
+}
+/* class="{{ $index % 2 == 0 ? 'table-success' : '' }}" */
+
+/* make the first td of the row radius to 20px, the left */
+tr td:first-of-type {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  
+}
+
+/* make the last td of the row radius to 20px, the right one  */
+tr td:last-of-type {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+
+.bookid{
+    font-size:20px;
+    font-style: normal;
+    font-weight: 700;
+    color:#404040 !important;
+}
+
+.booktitle{
+    font-style: normal;
+    font-weight: 500;
+   
+}
+
+.bookauthor ,.bookdescr,.bookisbn,.bookcopies,.bookbrwdate{
+    color: #717171 !important;
+font-family: Roboto;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+}
+
+button{
+    border-style: none !important;
+    background-color: #40404000;
+}
+.addbtn{
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+    padding-left: 20px;
+    padding-right: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+    background-color: #4E9C84;
+    height: 50px;
+    color:rgb(255, 255, 255);
+}
+.borrowbtn{
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    font-weight: semibold;
+    border-radius: 5px;
+    background-color: #4E9C84;
+    height: 40px;
+    color:rgb(255, 255, 255);
+}
+
+.returnbtn{
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    font-weight: semibold;
+    border-radius: 5px;
+    background-color: #BD5F41;
+    height: 40px;
+    color:rgb(255, 255, 255);
+}
+
+.search {
+    width: 100%;
+    height: 45px;
+    font-family: Roboto;
+    font-weight: 700px;
+    font-size: 20px;
+    border: 1px solid #1d1d1d;
+    border-radius: 12px;
+    padding: 9px 4px 9px 40px;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Create 7 equal columns */
+    gap: 5px; /* Adjust the gap between books as needed */
+}
+
+.book {
+    text-align: center;
+}
+
+.book img {
+    max-width: 120px;
+    height: auto;
+}
+
+.book-info {
+    margin-top: 10px;
+}
+
+.book-title {
+    font-size: 16px;
+    font-weight: bold;
+    color:black
+}
+
+.book-author {
+    font-size: 14px;
+    color: #777;
+}
+
+.borrow-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Add more CSS styling as needed */
+
+/* Add more CSS styling as needed */
+
