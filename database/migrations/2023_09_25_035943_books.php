@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('isbn');
             $table->integer('copies'); // Use integer for the number of copies
+            $table->string('cover')->nullable(); // Use nullable for the cover image
             $table->timestamps();
         });
     }

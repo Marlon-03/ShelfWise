@@ -14,6 +14,7 @@ class Book extends Model
         'author',
         'description',
         'isbn',
-        'copies'
+        'copies',
+        'cover'
     ];
 }

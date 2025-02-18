@@ -36,9 +36,7 @@
                 <td class="bookcopies">{{ $book->copies }}</td>
 
                 <td>
-                    <a href="{{ route('book.details', $book->id) }}">
-                        <i class="bi bi-eye-fill" style="color:#4E9C84;font-size:30px"></i>
-                    </a>
+
                     
                     <a href="{{ route('book.edit', $book->id) }}"> 
                         <i class="bi bi-pencil-fill" style="color:#4E9C84;font-size:30px"></i>

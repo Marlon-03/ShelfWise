@@ -78,7 +78,7 @@ Route::middleware(['auth', 'CheckRole:admin,superadmin'])->group(function () {
     Route::get('/create/book/', [BooksController::class, 'create'])->name('book.create'); 
     Route::get('/edit/book/{id}', [BooksController::class, 'edit'])->name('book.edit'); 
     Route::post('/store/book/', [BooksController::class, 'store'])->name('book.store');
-    Route::post('/update/book/{id}', [BooksController::class, 'update'])->name('book.update');
+    Route::put('/update/book/{id}', [BooksController::class, 'update'])->name('book.update');
     Route::delete('/delete/book/{id}', [BooksController::class, 'delete'])->name('book.delete');
 });
 

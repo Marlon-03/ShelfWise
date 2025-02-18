@@ -14,6 +14,8 @@ Follow these steps to set up the project:
 
 6. **Seed Users:** Populate the Users table with `php artisan db:seed UsersTableSeeder`.
 
-7. **Start Server:** Start the Laravel development server with `php artisan serve`.
+7. **Image Upload:** To use storage in public to for images `php artisan storage:link`.
 
-8. **Access Application:** Open your web browser and go to `localhost:8000` to access the application.
+8. **Start Server:** Start the Laravel development server with `php artisan serve`.
+
+9. **Access Application:** Open your web browser and go to `localhost:8000` to access the application.

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Book;
 use App\Models\BorrowHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BooksController extends Controller
 {
@@ -39,7 +40,13 @@ class BooksController extends Controller
             'description' => 'required',
             'isbn' => 'required|integer',
             'copies' => 'required|integer',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
+        $coverPath = null;
+        if ($request->hasFile('cover')) {
+            $coverPath = $request->file('cover')->store('books', 'public'); 
+        }
 
         Book::create([
             'title' => $credentials['title'],
@@ -47,6 +54,7 @@ class BooksController extends Controller
             'description' => $credentials['description'],
             'isbn' => $credentials['isbn'],
             'copies' => $credentials['copies'],
+            'cover' => $coverPath,
         ]);
 
         session()->flash('success', 'Book created successfully');
@@ -66,7 +74,21 @@ class BooksController extends Controller
             'description' => 'required',
             'isbn' => 'required|integer',
             'copies' => 'required|integer',
+            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
+        if ($request->hasFile('cover')) {
+            // Delete the old cover file if it exists
+            if ($id->cover) {
+                Storage::delete('public/' . $id->cover);
+            }
+    
+            // Store the new cover image
+            $coverPath = $request->file('cover')->store('books', 'public');
+        } else {
+            // If no new cover is uploaded, keep the old cover path
+            $coverPath = $id->cover;
+        }
 
         $id->update([
             'title' => $credentials['title'],
@@ -74,6 +96,7 @@ class BooksController extends Controller
             'description' => $credentials['description'],
             'isbn' => $credentials['isbn'],
             'copies' => $credentials['copies'],
+            'cover' => $coverPath,
         ]);
 
         session()->flash('success', 'User updated successfully');
