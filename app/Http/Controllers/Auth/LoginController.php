@@ -30,13 +30,13 @@ class LoginController extends Controller
             
             switch ($user->role->name) {
                 case 'superadmin':
-                    return redirect()->route('superadmin.home');
+                    return redirect()->route('dashboard');
                 case 'admin':
-                    return redirect()->route('admin.home');
+                    return redirect()->route('dashboard');
                 case 'user':
-                    return redirect()->route('user.home');
+                    return redirect()->route('dashboard');
                 default:
-                    return redirect()->route('user.home'); // Default fallback route
+                    return redirect()->route('dashboard'); // Default fallback route
             }
         }
 

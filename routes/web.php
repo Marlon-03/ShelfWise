@@ -24,7 +24,9 @@ use App\Http\Controllers\Management\BorrowHistoryController;
 
 
 //Home
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 
 // Routes for guests
@@ -98,7 +100,7 @@ Route::middleware(['auth', 'CheckRole:admin,superadmin'])->group(function () {
 Route::middleware(['auth', 'CheckRole:superadmin,admin,user'])->group(function () {
     Route::get('/books', [BorrowHistoryController::class, 'books'])->name('books'); 
     Route::get('/book/{id}', [BorrowHistoryController::class, 'viewBook'])->name('book.view'); 
-    Route::get('/books/borrowhistory', [BorrowHistoryController::class, 'userbbh'])->name('borrow.history'); 
+    Route::get('/dashboard', [BorrowHistoryController::class, 'userbbh'])->name('dashboard'); 
     Route::post('/borrow/book/{id}', [BorrowHistoryController::class, 'borrowBook'])->name('book.borrow'); 
     Route::post('/books/{bookId}/return/{borrowedId}', [BorrowHistoryController::class, 'returnBook'])->name('book.return'); 
 });

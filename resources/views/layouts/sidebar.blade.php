@@ -2,13 +2,9 @@
 
 
     <li>
-        @php
-         $routeName = auth()->user()->role_id === 1 ? 'superadmin.home' : (auth()->user()->role_id === 2 ? 'admin.home' : 'user.home');
-        @endphp
-        <a href="{{ route($routeName) }}" class="py-2 px-3 nav-link {{ Route::currentRouteName() === $routeName ? 'active' : '' }}">
+        <a href="{{ route('dashboard') }}" class="d-flex align-items-center py-2 px-3 nav-link {{ Route::currentRouteName() === 'dashboard' ? 'active' : '' }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="33" height="33" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
-            </svg>
-            Dashboard
+            </svg> Dashboard
         </a>
     </li>
     
@@ -20,11 +16,11 @@
         Books
         </a>
         <ul class="list-unstyled mx-4 " style="font-size:16px"> <!-- Nested list for Borrow History -->
-            <li>
+            {{-- <li>
                 <a href="{{ route('borrow.history') }}" class="d-flex align-items-center py-2 px-3 nav-link {{ Route::currentRouteName() === 'borrow.history' ? 'active' : '' }}">
                     <i class="bi bi-arrow-return-right mx-1" style="font-size: 24px";></i> Your Borrowing History
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </li>
 

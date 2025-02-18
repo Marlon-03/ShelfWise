@@ -34,7 +34,7 @@
             </div>
     
             <!-- Main Panel -->
-            <div class="bg-light d-flex justify-content-center vw-100" style="margin-left: 250px; background-color:#F8F6F8">
+            <div class="bg-light d-flex justify-content-center vw-100 vh-100" style="margin-left: 250px; background-color:#F8F6F8">
                 <div class="w-100 mx-5 my-4">
                     @yield('content')
                 </div>

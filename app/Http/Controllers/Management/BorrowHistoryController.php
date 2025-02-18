@@ -247,7 +247,7 @@ public function userbbh(Request $request, Book $bookId, BorrowHistory $borrowedI
 
     // Increment the book copies
 
-    return view('Management.Books.borrowinghistory', compact('returnedBooks', 'borrowedBooks'));
+    return view('Management.Books.dashboard', compact('returnedBooks', 'borrowedBooks'));
 }
 
 
