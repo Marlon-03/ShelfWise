@@ -59,49 +59,48 @@ Route::middleware(['auth', 'CheckRole:user'])->group(function () {
 
 //MANAGE USERS
 Route::middleware(['auth', 'CheckRole:admin,superadmin'])->group(function () {
-    Route::get('/manage/users', [UserManagementController::class, 'users'])->name('user.manage'); //ManageUsersDashboard
-    Route::get('/view/user/{id}', [UserManagementController::class, 'details'])->name('user.details'); //ViewUser
-    Route::get('/create/user/', [UserManagementController::class, 'create'])->name('user.create'); //Create
-    Route::get('/edit/user/{id}', [UserManagementController::class, 'edit'])->name('user.edit'); //Edit
-    Route::post('/store/user/', [UserManagementController::class, 'store'])->name('user.store');//StoreCreateduser
-    Route::post('/update/user/{id}', [UserManagementController::class, 'update'])->name('user.update');//UpdateEditedUser
-    Route::delete('/delete/user/{id}', [UserManagementController::class, 'delete'])->name('user.delete');//Delete
+    Route::get('/manage/users', [UserManagementController::class, 'users'])->name('user.manage');
+    Route::get('/view/user/{id}', [UserManagementController::class, 'details'])->name('user.details'); 
+    Route::get('/create/user/', [UserManagementController::class, 'create'])->name('user.create'); 
+    Route::get('/edit/user/{id}', [UserManagementController::class, 'edit'])->name('user.edit'); 
+    Route::post('/store/user/', [UserManagementController::class, 'store'])->name('user.store');
+    Route::post('/update/user/{id}', [UserManagementController::class, 'update'])->name('user.update');
+    Route::delete('/delete/user/{id}', [UserManagementController::class, 'delete'])->name('user.delete');
 });
 
 
 //MANAGE Books
 Route::middleware(['auth', 'CheckRole:admin,superadmin'])->group(function () {
-    Route::get('/manage/books', [BooksController::class, 'books'])->name('book.manage'); //ManageBooksDashboard
-    Route::get('/view/book/{id}', [BooksController::class, 'details'])->name('book.details'); //View
-    Route::get('/create/book/', [BooksController::class, 'create'])->name('book.create'); //Create
-    Route::get('/edit/book/{id}', [BooksController::class, 'edit'])->name('book.edit'); //Edit
-    Route::post('/store/book/', [BooksController::class, 'store'])->name('book.store');//StoreCreatedBook
-    Route::post('/update/book/{id}', [BooksController::class, 'update'])->name('book.update');//UpdateEditedBook
-    Route::delete('/delete/book/{id}', [BooksController::class, 'delete'])->name('book.delete');//Delete
+    Route::get('/manage/books', [BooksController::class, 'books'])->name('book.manage');
+    Route::get('/view/book/{id}', [BooksController::class, 'details'])->name('book.details'); 
+    Route::get('/create/book/', [BooksController::class, 'create'])->name('book.create'); 
+    Route::get('/edit/book/{id}', [BooksController::class, 'edit'])->name('book.edit'); 
+    Route::post('/store/book/', [BooksController::class, 'store'])->name('book.store');
+    Route::post('/update/book/{id}', [BooksController::class, 'update'])->name('book.update');
+    Route::delete('/delete/book/{id}', [BooksController::class, 'delete'])->name('book.delete');
 });
 
 //MANAGE Books BorrowHistory
 Route::middleware(['auth', 'CheckRole:admin,superadmin'])->group(function () {
-    Route::get('/manage/bbh', [BorrowHistoryController::class, 'borrowhistory'])->name('bbh.manage'); //ManageBooksDashboard
-    // Route::get('/book/{id}', [BorrowHistoryController::class, 'viewBook'])->name('book.view'); //View
+    Route::get('/manage/bbh', [BorrowHistoryController::class, 'borrowhistory'])->name('bbh.manage'); 
     Route::get('/manage/borrowed', [BorrowHistoryController::class, 'allborrowedBooks'])->name('bbh.borrowed');
     Route::get('/manage/returned', [BorrowHistoryController::class, 'allreturnedBooks'])->name('bbh.returned');
 
-    Route::get('/view/bbh/{id}', [BorrowHistoryController::class, 'details'])->name('bbh.details'); //View
-    Route::get('/create/bbh/', [BorrowHistoryController::class, 'create'])->name('bbh.create'); //Create
-    Route::get('/edit/bbh/{id}', [BorrowHistoryController::class, 'edit'])->name('bbh.edit'); //Edit
-    Route::post('/store/bbh/', [BorrowHistoryController::class, 'store'])->name('bbh.store');//StoreCreatedBook
-    Route::post('/update/bbh/{id}', [BorrowHistoryController::class, 'update'])->name('bbh.update');//UpdateEditedBook
-    Route::delete('/delete/bbh/{id}', [BorrowHistoryController::class, 'delete'])->name('bbh.delete');//Delete
+    Route::get('/view/bbh/{id}', [BorrowHistoryController::class, 'details'])->name('bbh.details'); 
+    Route::get('/create/bbh/', [BorrowHistoryController::class, 'create'])->name('bbh.create'); 
+    Route::get('/edit/bbh/{id}', [BorrowHistoryController::class, 'edit'])->name('bbh.edit'); 
+    Route::post('/store/bbh/', [BorrowHistoryController::class, 'store'])->name('bbh.store');
+    Route::post('/update/bbh/{id}', [BorrowHistoryController::class, 'update'])->name('bbh.update');
+    Route::delete('/delete/bbh/{id}', [BorrowHistoryController::class, 'delete'])->name('bbh.delete');
 });
 
 // Borrowing and Returning Books
 Route::middleware(['auth', 'CheckRole:superadmin,admin,user'])->group(function () {
-    Route::get('/books', [BorrowHistoryController::class, 'books'])->name('books'); //ManageBooksDashboard
-    Route::get('/book/{id}', [BorrowHistoryController::class, 'viewBook'])->name('book.view'); //View
-    Route::get('/books/borrowhistory', [BorrowHistoryController::class, 'userbbh'])->name('borrow.history'); //ManageBooksDashboard
-    Route::post('/borrow/book/{id}', [BorrowHistoryController::class, 'borrowBook'])->name('book.borrow'); // Borrow
-    Route::post('/books/{bookId}/return/{borrowedId}', [BorrowHistoryController::class, 'returnBook'])->name('book.return'); // Return
+    Route::get('/books', [BorrowHistoryController::class, 'books'])->name('books'); 
+    Route::get('/book/{id}', [BorrowHistoryController::class, 'viewBook'])->name('book.view'); 
+    Route::get('/books/borrowhistory', [BorrowHistoryController::class, 'userbbh'])->name('borrow.history'); 
+    Route::post('/borrow/book/{id}', [BorrowHistoryController::class, 'borrowBook'])->name('book.borrow'); 
+    Route::post('/books/{bookId}/return/{borrowedId}', [BorrowHistoryController::class, 'returnBook'])->name('book.return'); 
 });
 
 

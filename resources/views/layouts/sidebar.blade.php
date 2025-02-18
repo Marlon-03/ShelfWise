@@ -98,14 +98,5 @@
         @endauth
     </div>
 
-    <div style="display:flex;position: absolute; margin-bottom:15px; bottom:0;">
-        @if (auth()->user()->role_id === 1)
-        <p>Super Admin</p>
-        @elseif (auth()->user()->role_id === 2)
-        <p>Admin</p>
-        @else
-        <p>User</p>
-        @endif
-    </div>
 </ul>
 
