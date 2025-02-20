@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div class="container mt-5">
+<div class="container mx-5">
     <h2>Add Book</h2>
 
     <form action="{{ route('book.store') }}" method="post" enctype="multipart/form-data">
@@ -51,14 +51,9 @@
 
         <div class="mb-3">
             <label for="cover" class="form-label">Book Cover</label>
-            
-            <!-- Image Preview -->
-            <div id="imagePreview" style="max-width: 200px; margin-bottom: 10px;">
-                <!-- This is where the preview will show up -->
-            </div>
-            
-            <input type="file" name="cover" class="form-control" id="coverInput">
-            
+            <div id="imagePreview" style="max-width: 200px; margin-bottom: 10px;">    
+            </div>      
+            <input type="file" name="cover" class="form-control" id="coverInput">      
             @if ($errors->has('cover'))
                 <div class="text-danger">{{ $errors->first('cover') }}</div>
             @endif

@@ -11,7 +11,8 @@
         @foreach ($books as $book)
         <a href="{{ route('book.view', $book->id)}}" class="book">
             <!-- You can insert the book cover here -->
-            <img src="{{asset('img/book-cover.png') }}" alt="{{ $book->title }}">
+            <img src="{{ asset('storage/' . $book->cover) }}" alt="{{ $book->title }}" style="height: 200px; width: 150px; object-fit: cover;">
+
     
             <div class="book-info">
                 <h3 class="book-title">{{ $book->title }}</h3>

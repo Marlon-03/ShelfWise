@@ -1,23 +1,34 @@
 @extends('layouts.app')
 
-
 @section('content')
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <!-- Book Cover -->
+                    <img src="{{ asset('storage/' . $book->cover) }}" alt="{{ $book->title }}" 
+                        class="img-fluid rounded mb-3" 
+                        style="height: 250px; width: 180px; object-fit: cover;">
+                    
+                    <!-- Book Details -->
+                    <h4 class="fw-bold">{{ $book->title }}</h4>
+                    <p class="text-muted">by {{ $book->author }}</p>
+                    
+                    <p class="small text-secondary"><strong>Description:</strong> {{ $book->description }}</p>
+                    <p class="mb-1"><strong>ISBN:</strong> {{ $book->isbn }}</p>
+                    <p class="mb-3"><strong>Available Copies:</strong> {{ $book->copies }}</p>
 
-<div>
-    <h5>{{ $book->id }}</h5>
-    <h5>{{ $book->title }}</h5>
-    <h5>{{ $book->author }}</h5>
-    <h5>{{ $book->description }}</h5>
-    <h5>{{ $book->isbn }}</h5>
-    <h5>{{ $book->copies }}</h5>
-    {{-- <a href="/edit/{{$todos->id}}"><span class="btn btn-primary">Edit</span></a>
-    <a href="/delete/{{$todos->id}}"><span class="btn btn-danger">Delete</span></a> --}}
-
-     <form method="POST" action="{{ route('book.borrow', $book->id) }}">
-                @csrf
-                <!-- Add form inputs or buttons here -->
-                <button class="borrow-btn" type="submit">Borrow</button>
-    </form> 
+                    <!-- Borrow Button -->
+                    <form method="POST" action="{{ route('book.borrow', $book->id) }}">
+                        @csrf
+                        <button type="submit" class="btn btn-primary px-4" style="background-color:#4E9C84;">
+                            📖 Borrow This Book
+                        </button>
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
 @endsection

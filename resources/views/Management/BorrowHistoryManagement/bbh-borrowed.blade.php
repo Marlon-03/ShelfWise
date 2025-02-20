@@ -8,30 +8,36 @@
     
 <table class="table  table-borderless">
     <thead>
-        <tr>
+        <colgroup>
+            <col style="width: 5%">
+            <col style="width: 15%">
+            <col style="width: 20%">
+            <col style="width: 20%">
+            <col style="width: 20%">
+            <col style="width: 10%">
+            <col style="width: 20%">
+        </colgroup>
+        <tr class="text-center">
             <th>BBH ID</th>
-            <th>User ID</th>
-            <th>Book ID</th>
+            <th>User</th>
+            <th>Book Title</th>
             <th>Borrowed Date</th>
             <th>Returned Date</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($bbh as $bbh)
-        <tr>
+        <tr class="text-center">
             <td>{{ $bbh->id }}</td>
             <td>{{ $bbh->user->name }}</td> 
-            <td>{{ $bbh->book->id }}</td>
+            <td>{{ $bbh->book->title }}</td>
             <td>{{ $bbh->borrow_date }}</td>
             <td>{{ $bbh->return_date }}</td>
             <td>{{ $bbh->borrow_status }}</td>
 
             <td>
-                <a href="{{ route('bbh.details', $bbh->id) }}">
-                    <i class="bi bi-eye-fill" style="color:#4E9C84;font-size:30px"></i>
-                </a>
-                
                 <a href="{{ route('bbh.edit', $bbh->id) }}"> 
                     <i class="bi bi-pencil-fill" style="color:#4E9C84;font-size:30px"></i>
                 </a>

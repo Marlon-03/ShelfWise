@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mx-5">
     <h2>Edit Book</h2>
 
     <form action="{{ route('book.update', $book->id) }}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('PUT') <!-- This is important for updating resources in RESTful routes -->
+        @method('PUT')
 
         <div class="mb-3">
             <label for="title" class="form-label">Book Title</label>
@@ -48,12 +48,11 @@
             @endif
         </div>
 
-        <!-- Display current cover image if exists -->
         <div class="mb-3">
             <label for="cover" class="form-label">Book Cover</label>
             @if ($book->cover)
                 <div>
-                    <img src="{{ asset('storage/' . $book->cover) }}" alt="Current Cover" class="img-fluid" style="max-width: 200px;">
+                    <img src="{{ asset('storage/' . $book->cover) }}" alt="Current Cover" class="img-fluid" style="max-width: 200px; margin-bottom: 10px;">
                 </div>
             @endif
             <input type="file" name="cover" class="form-control">
@@ -62,7 +61,7 @@
             @endif
         </div>
 
-        <button type="submit" class="btn btn-primary">Update Book</button>
+        <button type="submit" class="btn btn-primary" style="background-color:#4E9C84;">Update Book</button>
     </form>
 </div>
 @endsection

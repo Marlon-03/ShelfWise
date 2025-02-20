@@ -14,7 +14,15 @@
     <h1 class="fs-2 fw-bold my-4">All Users</h1>
 <table class="table table-borderless">
     <thead>
-        <tr>
+        <colgroup>
+            <col style="width: 20%">
+            <col style="width: 20%">    
+            <col style="width: 20%">
+            <col style="width: 20%">
+            <col style="width: 20%">
+        </colgroup>
+       
+        <tr class="text-center">
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
@@ -24,7 +32,7 @@
     </thead>
     <tbody>
         @foreach ($users as $user)
-        <tr>
+        <tr class="text-center">
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>

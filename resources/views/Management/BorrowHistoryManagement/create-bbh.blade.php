@@ -1,75 +1,84 @@
 @extends('layouts.app')
 
-
 @section('content')
-<form action=" {{route('bbh.store')}}" method="post">
-    @csrf
-    <div>
-        <label for=""> Id of borrower</label>
-        <input type="id" name="borrower"  >
-    </div>
-    <div>
-        <label for="">Id of Book Borrowed</label>
-        <input type="id" name="bookborrowed" >
-    </div>
-    <div>
-        <label for="">Date Borrowed</label>
-        <input type="date" name="dateborrowed"  >
-    </div>
-    <div>
-        <label for="">Date Returned</label>
-        <input type="date" name="datereturned">
-    </div>
-    <div>
-        <label for="">Borrow Status</label>
-        <select type="status" name="borrowstatus">
-            <option value="borrowed">Borrowed</option>
-            <option value="returned">Returned</option>
-        </select>
-    </div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Borrow a Book</h5>
+                </div>
+                <div class="card-body">
+                    <form action="{{ route('bbh.store') }}" method="POST">
+                        @csrf
 
-    <div></div>
-        <input type="submit" value="Submit">
+                        <div class="mb-3">
+                            <label class="form-label">ID of Borrower</label>
+                            <input type="number" name="borrower" class="form-control" placeholder="Enter borrower ID">
+                            @error('borrower')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">ID of Book Borrowed</label>
+                            <input type="number" name="bookborrowed" class="form-control" placeholder="Enter book ID">
+                            @error('bookborrowed')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Date Borrowed</label>
+                            <input type="date" name="dateborrowed" class="form-control">
+                            @error('dateborrowed')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Date Returned</label>
+                            <input type="date" name="datereturned" class="form-control">
+                            @error('datereturned')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Borrow Status</label>
+                            <select name="borrowstatus" class="form-select">
+                                <option value="borrowed">Borrowed</option>
+                                <option value="returned">Returned</option>
+                            </select>
+                            @error('borrowstatus')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success" style="background-color:#4E9C84;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @if ($errors->any())
+                <div class="alert alert-danger mt-3">
+                    <strong>There were some errors:</strong>
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger mt-3">
+                    {{ session('error') }}
+                </div>
+            @endif
+        </div>
     </div>
-</form>
-
-
-@if ($errors->has('borrower'))
-    <div>
-        {{ $errors->first('borrower') }}
-    </div>
-@endif
-
-
-@if ($errors->has('bookborrowed'))
-    <div>
-        {{ $errors->first('bookborrowed') }}
-    </div>
-@endif
-
-@if ($errors->has('dateborrowed'))
-    <div>
-        {{ $errors->first('dateborrowed') }}
-    </div>
-@endif
-
-@if ($errors->has('datereturned'))
-    <div>
-        {{ $errors->first('datereturned') }}
-    </div>
-@endif
-
-@if ($errors->has('borrowstatus'))
-    <div>
-        {{ $errors->first('borrowstatus') }}
-    </div>
-@endif
-
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
-
-
+</div>
 @endsection
